@@ -261,9 +261,9 @@ client.on("voiceStateUpdate", async (oldState, newState) => {
         .setTimestamp();
 
       if (moveLog) {
-        const { executor, target, createdTimestamp } = moveLog;
-        console.log( Date.now()-createdTimestamp)
-
+        const { executor} = moveLog;
+        
+        if (executor.id !== oldState.member.id)
         embed.addFields({
           name: "Moved By",
           value: `<@${executor.id}>`,
