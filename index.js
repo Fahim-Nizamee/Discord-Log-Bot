@@ -1,7 +1,7 @@
 require("dotenv").config();
 const { LocalStorage } = require('node-localstorage');
 
-const keepAlive = require('./server')
+const keepAlive = require('./server.js')
 const {
   Client,
   GatewayIntentBits,
