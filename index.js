@@ -1,6 +1,7 @@
 require("dotenv").config();
 const { LocalStorage } = require('node-localstorage');
 
+const keepAlive = require('./server')
 const {
   Client,
   GatewayIntentBits,
@@ -263,7 +264,7 @@ client.on("voiceStateUpdate", async (oldState, newState) => {
       if (moveLog) {
         const { executor,target} = moveLog;
         
-        if (executor.id !== oldState.member.id && target.id === oldState.member.id)
+        if (executor.id !== oldState.member.id)
         embed.addFields({
           name: "Moved By",
           value: `<@${executor.id}>`,
@@ -278,6 +279,9 @@ client.on("voiceStateUpdate", async (oldState, newState) => {
   }
 });
 
+
+
+keepAlive()
 client.login(TOKEN).catch((error) => {
   console.error("Failed to login:", error);
 });
